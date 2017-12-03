@@ -10,9 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'TestController@welcome');
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('admin/products', 'ProductController@index'); //listado de productos
+Route::get('admin/products/create', 'ProductController@create'); //crear nuevos productos
+Route::post('admin/products', 'ProductController@store'); //guardar nuevos productos
