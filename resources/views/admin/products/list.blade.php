@@ -8,11 +8,16 @@
 
     <div class="main main-raised">
         <div class="container">
-            <div class="section text-center">
-                <h2 class="title">Listado de productos</h2>
+            <div class="section">
+                <h2 class="title text-center">Listado de productos</h2>
 
                 <div class="team">
-                    <div class="row">
+                    <div class="row ">
+                        <div class="text-center">
+                            <a href="{{ url('admin/products/create') }}" class="btn btn-primary btn-round">
+                                <i class="material-icons">shop</i> Agregar Producto
+                            </a>
+                        </div>
                             <table class="table">
                                 <thead>
 
@@ -31,8 +36,8 @@
                                     <td class="text-center">{{ $product->id }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->description }}</td>
-                                    <td>{{ $product->category->name }}</td>
-                                    <td class="text-right">&dollar;; {{ $product->price }}</td>
+                                    <td>{{ $product->category ? $product->category->name : 'Sin Categoría' }}</td>
+                                    <td class="text-right">&dollar; {{ $product->price }}</td>
                                     <td class="td-actions text-right">
                                         <button type="button" rel="tooltip" title="Ver Producto" class="btn btn-info btn-simple btn-xs">
                                             <i class="material-icons">shop</i>
@@ -48,7 +53,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            {{ $products->links() }}
+                            <div class="text-center">{{ $products->links() }}</div>
                     </div>
                 </div>
 

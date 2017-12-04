@@ -18,8 +18,17 @@ class ProductController extends Controller
         return view('admin.products.create'); //formulario de alta de producto
     }
 
-    public function store()
+    public function store(Request $request)
     {
         //registra el nuevo producto en la BD
+        //dd($request->all());
+        $product = new Product();
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->long_description = $request->input('long_description');
+        $product->save(); //realiza el insert en la BD
+
+        return redirect('/admin/products');
     }
 }
