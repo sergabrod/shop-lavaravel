@@ -77,11 +77,12 @@
                         @foreach ($products as $product)
                         <div class="col-md-4">
                             <div class="team-player">
-                                <img src="{{ url($product->images()->first()->image) }}" alt="Thumbnail Image" class="img-raised img-circle">
+
+                                <img src="{{ $product->images()->count() > 0 ? url($product->images()->first()->image) : '' }}" alt="Thumbnail Image" class="img-raised img-circle">
                                 <h4 class="title">{{ $product->name }}<br />
-                                    <small class="text-muted">{{ $product->category->name }}</small>
+                                    <small class="text-muted">{{ $product->category ? $product->category->name : 'Sin Categoría' }}</small>
                                 </h4>
-                                <p class="description">{{ $product->description }}<a href="#">links</a> for people to be able to follow them outside the site.</p>
+                                <p class="description">{{ $product->description }}</p>
                                 <a href="#pablo" class="btn btn-simple btn-just-icon"><i class="fa fa-twitter"></i></a>
                                 <a href="#pablo" class="btn btn-simple btn-just-icon"><i class="fa fa-instagram"></i></a>
                                 <a href="#pablo" class="btn btn-simple btn-just-icon btn-default"><i class="fa fa-facebook-square"></i></a>
@@ -89,6 +90,7 @@
                         </div>
                         @endforeach
                     </div>
+                    <div class="text-center">{{ $products->links() }}</div>
                 </div>
 
             </div>
