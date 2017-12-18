@@ -16,24 +16,27 @@
                         <div class="col-sm-6">
                             <div class="form-group label-floating">
                                 <label class="control-label">Nombre</label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control" value="{{ $product->name }}">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group label-floating">
                                 <label class="control-label">Precio</label>
-                                <input type="number" name="price" class="form-control">
+                                <input type="number" name="price" class="form-control" value="{{ $product->price }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group label-floating">
                         <label class="control-label">Descripción corta</label>
-                        <input type="text" name="description" class="form-control">
+                        <input type="text" name="description" class="form-control" value="{{ $product->description }}">
                     </div>
                     <div class="form-group label-floating">
-                        <textarea class="form-control" name="long_description" placeholder="Descripción extendida" rows="5"></textarea>
+                        <textarea class="form-control" name="long_description" placeholder="Descripción extendida" rows="5">
+                          {{ $product->long_description }}
+                        </textarea>
                     </div>
-                    <button class="btn btn-primary">Guardar</button>
+                    <button class="btn btn-primary">Actualizar Producto</button>
+                    <a href="{{ url('admin/products') }}" class="btn btn-default">Cancelar</a>
                 </form>
             </div>
         </div>
