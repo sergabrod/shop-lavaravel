@@ -21,4 +21,4 @@ Route::post('admin/products', 'ProductController@store'); //guardar nuevos produ
 Route::get('admin/products/{id}/edit', 'ProductController@edit'); //form de edición
 Route::post('admin/products/{id}/edit', 'ProductController@update'); //actualizar productos
 
-Route::get('admin/products/{id}/delete', 'ProductController@destroy'); //eliminar productos
+Route::post('admin/products/{id}/delete', 'ProductController@destroy'); //eliminar productos

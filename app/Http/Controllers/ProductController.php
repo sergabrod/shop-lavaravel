@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\ProductImage;
 
 class ProductController extends Controller
 {
@@ -55,6 +56,8 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+        //borro la imagen asociada antes para evitar error de FK
+        ProductImage::where('product_id', $product->id)->delete();
         $product->delete(); //borra el producto en la BD
 
          //vuelve hacia atrás porque el usuario ya está ubicado
