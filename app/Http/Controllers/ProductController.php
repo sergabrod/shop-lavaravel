@@ -51,4 +51,14 @@ class ProductController extends Controller
 
         return redirect('/admin/products');
     }
+
+    public function destroy($id)
+    {
+        $product = Product::find($id);
+        $product->delete(); //borra el producto en la BD
+
+         //vuelve hacia atrás porque el usuario ya está ubicado
+         // en el listado de productos
+        return back();
+    }
 }

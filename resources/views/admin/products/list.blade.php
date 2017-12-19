@@ -45,9 +45,9 @@
                                         <a href="{{ url('/admin/products/' . $product->id . '/edit') }}" type="button" rel="tooltip" title="Editar Producto" class="btn btn-success btn-simple btn-xs">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <button type="button" rel="tooltip" title="Eliminar Producto" class="btn btn-danger btn-simple btn-xs">
+                                        <a href="{{ url('/admin/products/' . $product->id . '/delete') }}" type="button" rel="tooltip" title="Eliminar Producto" class="btn btn-danger btn-simple btn-xs">
                                             <i class="fa fa-times"></i>
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach
