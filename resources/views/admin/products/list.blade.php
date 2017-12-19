@@ -39,14 +39,16 @@
                                     <td>{{ $product->category ? $product->category->name : 'Sin Categoría' }}</td>
                                     <td class="text-right">&dollar; {{ $product->price }}</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Ver Producto" class="btn btn-info btn-simple btn-xs">
-                                            <i class="material-icons">shop</i>
-                                        </button>
-                                        <a href="{{ url('/admin/products/' . $product->id . '/edit') }}" type="button" rel="tooltip" title="Editar Producto" class="btn btn-success btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <form method="post" action="{{ url('/admin/products/' . $product->id . '/delete') }}">
+                                      <form method="post" action="{{ url('/admin/products/' . $product->id) }}">
                                           {{ csrf_field() }}
+                                          {{ method_field('DELETE') }}
+                                          <a type="button" rel="tooltip" title="Ver Producto" class="btn btn-info btn-simple btn-xs">
+                                              <i class="material-icons">shop</i>
+                                          </a>
+                                          <a href="{{ url('/admin/products/' . $product->id . '/edit') }}" type="button" rel="tooltip" title="Editar Producto" class="btn btn-success btn-simple btn-xs">
+                                              <i class="fa fa-edit"></i>
+                                          </a>
+                                          <!-- lo anterior equivale a <input type="hidden" name="_method" value="DELETE"> -->
                                           <button type="submit" rel="tooltip" title="Eliminar Producto" class="btn btn-danger btn-simple btn-xs">
                                               <i class="fa fa-times"></i>
                                           </button>
