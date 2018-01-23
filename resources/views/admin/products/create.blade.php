@@ -10,6 +10,17 @@
         <div class="container">
             <div class="section">
                 <h2 class="title text-center">Registrar Producto</h2>
+
+                @if ($errors->any())
+                  <div class="alert alert-danger">
+                    <ul>
+                      @foreach ($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                      @endforeach
+                    </ul>
+                  </div>
+                @endif
+
                 <form method="post" action="{{ url('admin/products') }}">
                     {{ csrf_field() }}
                     <div class="row">
