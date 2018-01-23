@@ -21,14 +21,25 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        //mensajes en español
+        $messages = [
+          'name.required' => 'Debe ingresar un nombre de producto',
+          'name.min' => 'El nombre del producto debe tener al menos 3 caracteres',
+          'description.required' => 'Debe ingresar una descripción',
+          'description.max' => 'La descripción no puede tener más de 200 caracteres',
+          'price.required' => 'Debe ingresar un precio para el producto',
+          'price.numeric' => 'El precio debe ser un valor numérico',
+          'price.min' => 'El precio ingresado debe ser mayor o igual a 0',
+        ];
+
         //reglas de Validación
         $rules = [
-          'name' => 'required|mi:3',
+          'name' => 'required|min:3',
           'description' => 'required|max:200',
           'price' => 'required|numeric|min:0',
         ];
         //Validación del formulario
-        $this->validate($request, $rules);
+        $this->validate($request, $rules, $messages);
         //registra el nuevo producto en la BD
         //dd($request->all());
         $product = new Product();
@@ -49,6 +60,25 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+      //mensajes en español
+      $messages = [
+        'name.required' => 'Debe ingresar un nombre de producto',
+        'name.min' => 'El nombre del producto debe tener al menos 3 caracteres',
+        'description.required' => 'Debe ingresar una descripción',
+        'description.max' => 'La descripción no puede tener más de 200 caracteres',
+        'price.required' => 'Debe ingresar un precio para el producto',
+        'price.numeric' => 'El precio debe ser un valor numérico',
+        'price.min' => 'El precio ingresado debe ser mayor o igual a 0',
+      ];
+
+      //reglas de Validación
+      $rules = [
+        'name' => 'required|min:3',
+        'description' => 'required|max:200',
+        'price' => 'required|numeric|min:0',
+      ];
+      //Validación del formulario
+      $this->validate($request, $rules, $messages);
         //registra el nuevo producto en la BD
         //dd($request->all());
         $product = Product::find($id);
