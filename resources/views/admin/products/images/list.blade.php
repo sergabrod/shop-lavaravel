@@ -12,7 +12,7 @@
                 <h2 class="title text-center">Listado de imágenes de "{{ $product->name }}"</h2>
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form method="post" action="{{ url('admin/products/' .$product->id . '/images') }}">
+                        <form method="post" action="{{ url('admin/products/' .$product->id . '/images') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <input type="file" name="photo" required>
                             <button type="submit" class="btn btn-primary btn-round">
@@ -30,7 +30,7 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <img src="{{ $image->image }}">
+                            <img src="{{ $image->url }}" width="250">
                             <button type="submit" class="btn btn-danger btn-round">
                                 <i class="material-icons">delete</i> Eliminar imágen
                             </button>
