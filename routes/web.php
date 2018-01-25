@@ -27,4 +27,5 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
   Route::get('/products/{id}/images', 'ImageController@index'); //listar imágenes del producto
   Route::post('/products/{id}/images', 'ImageController@store'); //subir imágenes del producto
   Route::delete('/products/{id}/images', 'ImageController@destroy'); //eliminar imágenes del producto
+  Route::get('/products/{id}/images/featured/{imageid}', 'ImageController@selectFeatured'); //Asociar featured Image
 });

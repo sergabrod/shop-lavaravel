@@ -38,6 +38,18 @@
                                 <button type="submit" class="btn btn-danger btn-round">
                                     <i class="material-icons">delete</i> Eliminar imágen
                                 </button>
+                                @if ($image->featured)
+                                  {{-- ponemos si o si el type button para que no haga submit del form --}}
+                                  <button type="button" class="btn btn-info btn-fab btn-fab-mini btn-round" rel="tooltip"
+                                  title="Imágen destacada">
+                                    <i class="material-icons">favorite</i>
+                                  </a>
+                                @else
+                                    <a href="{{ url('/admin/products/' . $product->id . '/images/featured/' . $image->id) }}"  class="btn btn-primary btn-fab btn-fab-mini btn-round">
+                                    	<i class="material-icons">favorite</i>
+                                    </a>
+                               @endif
+
                             </form>
                         </div>
                     </div>
