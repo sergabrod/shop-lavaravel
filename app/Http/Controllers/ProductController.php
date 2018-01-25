@@ -10,7 +10,22 @@ class ProductController extends Controller
     public function show($id)
    {
         $product = Product::find($id);
-        //return view('show')->with(compact('product')); // Muestro detalle del producto
-        return "Mostrando datos del producto $id";
+        $images = $product->images;
+
+        //hacemos esto para compatibilizar
+        //con el diseño de material kit
+        $imagesLeft = collect();
+        $imagesRight = collect();
+
+        //reparto las imágenes en dos colecciones
+        foreach($images as $key => $image) {
+            if($key%2 == 0) {
+              $imagesLeft->push($image);
+            } else {
+              $imagesRight->push($image);
+            }
+        }
+
+        return view('products.show')->with(compact('product', 'imagesLeft', 'imagesRight')); // Muestro detalle del producto
    }
 }
