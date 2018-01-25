@@ -77,8 +77,8 @@
                         @foreach ($products as $product)
                         <div class="col-md-4">
                             <div class="team-player">
-
-                                <img src="{{ $product->images()->count() > 0 ? url($product->images()->first()->image) : '' }}" alt="Thumbnail Image" class="img-raised img-circle">
+                                {{-- featured_image es un campo calculado --}}
+                                <img src="{{ $product->featured_image }}" alt="Thumbnail Image" class="img-raised img-circle">
                                 <h4 class="title">{{ $product->name }}<br />
                                     <small class="text-muted">{{ $product->category ? $product->category->name : 'Sin Categoría' }}</small>
                                 </h4>
