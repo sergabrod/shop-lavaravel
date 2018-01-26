@@ -33,11 +33,67 @@
                 	</li>
                 </ul>
 
-                <ul>
-                @foreach (auth()->user()->cart->details as $detail)
-                  <li>{{ $detail }}</li>
-                @endforeach
-                </ul>
+                <hr>
+
+                  <table class="table">
+                      <thead>
+
+                      <tr>
+                          <th class="text-center">#</th>
+                            <th class="text-center">Producto</th>
+                          <th>Precio</th>
+                          <th>Desc.</th>
+                          <th>Cantidad</th>
+                          <th>Subtotal</th>
+                          <th class="text-center" >Opciones</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+
+
+
+                      @foreach (auth()->user()->cart->details as $cartDetail)
+                          <tr>
+                          <td class="text-center">
+                            <img src="{{ $cartDetail->product->featured_image }}" height="50">
+                          </td>
+                          <td>{{ $cartDetail->product->name }}</td>
+                          <td>&dollar; {{ $cartDetail->product->price }}</td>
+                          <td>{{ $cartDetail->discount }}</td>
+                          <td>{{ $cartDetail->quantity }}</td>
+                          @php
+                              $subtotal = 0;
+                              if (!isset($total)) {
+                                $total = 0;
+                              }
+                              $subtotal = $cartDetail->quantity * $cartDetail->product->price;
+                              $total = $total + $subtotal;
+                          @endphp
+                          <td>&dollar; {{ $subtotal }}</td>
+                          <td class="td-actions">
+                            <form method="post" action="{{ url('/admin/products/' . $cartDetail->product_id) }}">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <a href="{{ url('products/' . $cartDetail->product->id . '/show' ) }}" target="_blank" rel="tooltip"
+                                  title="Ver Producto" class="btn btn-info btn-simple btn-xs">
+                                    <i class="material-icons">shop</i>
+                                </a>
+                                <!-- lo anterior equivale a <input type="hidden" name="_method" value="DELETE"> -->
+                                <button type="submit" rel="tooltip" title="Eliminar Producto" class="btn btn-danger btn-simple btn-xs">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </form>
+                          </td>
+                      </tr>
+                      @endforeach
+                      <tr>
+                        <td colspan="5" class="text-right"><span class="label label-primary">Total</span></td>
+                        <td>&dollar; {{ $total }}</td>
+                        <td></td>
+                      </tr>
+                      </tbody>
+                  </table>
+
 
             </div>
         </div>
