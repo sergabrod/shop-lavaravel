@@ -16,7 +16,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/products/{id}/show', 'ProductController@show'); //form de edición
 
-Route::post('/cart', 'CartDetailController@store'); 
+Route::post('/cart', 'CartDetailController@store');
+Route::delete('/cart/detail/delete', 'CartDetailController@destroy');
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->group(function () {
   Route::get('/products', 'ProductController@index'); //listado de productos

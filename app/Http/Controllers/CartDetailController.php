@@ -17,4 +17,14 @@ class CartDetailController extends Controller
 
       return back();
     }
+
+    public function destroy(Request $request)
+    {
+        $cartDetail = CartDetail::find($request->cart_detail_id);
+        $cartDetail->delete(); //borra el producto en la BD
+
+         //vuelve hacia atrás porque el usuario ya está ubicado
+         // en el dashboard del carrito
+        return back();
+    }
 }
