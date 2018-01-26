@@ -18,7 +18,7 @@
                 @endif
 
                 <ul class="nav nav-pills nav-pills-primary" role="tablist">
-                	<li>
+                	<li class="active">
                 		<a href="#dashboard" role="tab" data-toggle="tab">
                 			<i class="material-icons">dashboard</i>
                 			Carrito de compras
@@ -31,6 +31,12 @@
                 			Pedidos realizados
                 		</a>
                 	</li>
+                </ul>
+
+                <ul>
+                @foreach (auth()->user()->cart->details as $detail)
+                  <li>{{ $detail }}</li>
+                @endforeach
                 </ul>
 
             </div>

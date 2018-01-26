@@ -22,7 +22,7 @@ class CreateCartDetailsTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
             $table->integer('quantity');
-            $table->integer('discounts'); // % de descuento
+            $table->integer('discount')->default(0); // % de descuento
             $table->timestamps();
         });
     }
