@@ -21,7 +21,10 @@ class CartDetailController extends Controller
     public function destroy(Request $request)
     {
         $cartDetail = CartDetail::find($request->cart_detail_id);
-        $cartDetail->delete(); //borra el producto en la BD
+
+        //Sólo elminar si el id pertenece a un carrito del usuario activo
+        if ($cartDetail->cart_id == auth()->user()->cart->id)
+            $cartDetail->delete(); //borra el producto en la BD
 
          //vuelve hacia atrás porque el usuario ya está ubicado
          // en el dashboard del carrito
