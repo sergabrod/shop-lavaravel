@@ -19,6 +19,9 @@ Route::get('/products/{id}/show', 'ProductController@show'); //form de edición
 Route::post('/cart', 'CartDetailController@store');
 Route::delete('/cart/detail/delete', 'CartDetailController@destroy');
 
+//Realiza el pedido
+Route::post('/order', 'CartController@update');
+
 Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->group(function () {
   Route::get('/products', 'ProductController@index'); //listado de productos
   Route::get('/products/create', 'ProductController@create'); //crear nuevos productos

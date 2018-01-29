@@ -51,7 +51,9 @@
                       </thead>
                       <tbody>
 
-
+                        @php
+                          $total = 0;
+                        @endphp
 
                       @foreach (auth()->user()->cart->details as $cartDetail)
                           <tr>
@@ -64,9 +66,6 @@
                           <td>{{ $cartDetail->quantity }}</td>
                           @php
                               $subtotal = 0;
-                              if (!isset($total)) {
-                                $total = 0;
-                              }
                               $subtotal = $cartDetail->quantity * $cartDetail->product->price;
                               $total = $total + $subtotal;
                           @endphp
@@ -94,8 +93,14 @@
                       </tr>
                       </tbody>
                   </table>
-
-
+                  <div class="text-center">
+                    <form action="{{ url('/order')}}" method="post">
+                      {{ csrf_field()}}
+                      <button class="btn btn-primary btn-round">
+                      	<i class="material-icons">shop</i> Realizar Pedido
+                      </button>
+                    </form>
+                  </div>
             </div>
         </div>
 
