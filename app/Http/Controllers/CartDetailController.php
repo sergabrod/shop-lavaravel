@@ -15,7 +15,8 @@ class CartDetailController extends Controller
       $cartDetail->quantity =$request->quantity;
       $cartDetail->save();
 
-      return back();
+      $notification = "El producto fue agregado al carrito";
+      return back()->with(compact('notification'));
     }
 
     public function destroy(Request $request)
@@ -28,6 +29,7 @@ class CartDetailController extends Controller
 
          //vuelve hacia atrás porque el usuario ya está ubicado
          // en el dashboard del carrito
-        return back();
+         $notification = "El producto fue quitado del carrito";
+         return back()->with(compact('notification'));
     }
 }
