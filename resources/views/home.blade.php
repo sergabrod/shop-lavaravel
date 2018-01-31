@@ -55,7 +55,7 @@
                           $total = 0;
                         @endphp
 
-                      @foreach (auth()->user()->cart->details as $cartDetail)
+                          @foreach (auth()->user()->cart->details as $cartDetail)
                           <tr>
                           <td class="text-center">
                             <img src="{{ $cartDetail->product->featured_image }}" height="50">
