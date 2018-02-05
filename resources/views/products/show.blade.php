@@ -15,7 +15,7 @@
 
                         <div class="name">
                             <h3 class="title">{{ $product->name }}</h3>
-                            <h6>{{ $product->category->name }}</h6>
+                            <h6>{{ $product->category ? $product->category->name : 'Sin Categoría' }}</h6>
                         </div>
 
                         @if (session('notification'))
@@ -23,7 +23,7 @@
                                 {{ session('notification') }}
                             </div>
                         @endif
-                        
+
                     </div>
                 </div>
                 <div class="description text-center">
