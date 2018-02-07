@@ -18,14 +18,22 @@ class Category extends Model
     //reglas de Validación
     public static $rules = [
       'name' => 'required|min:3',
-      'description' => 'required|max:200',
+        'description' => 'required|max:200',
     ];
-    
+
     protected $fillable = ['name', 'description'];
 
     //$category->products
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function getFeaturedImageAttribute()
+    {
+        //Obtengo el primer producto de esta categoría
+        //y extraigo su imágen del campo calculado
+        $featuredProduct = $this->products()->first();
+        return $featuredProduct->featured_image;
     }
 }

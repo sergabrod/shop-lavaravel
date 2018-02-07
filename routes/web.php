@@ -14,7 +14,8 @@ Route::get('/', 'TestController@welcome');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/products/{id}/show', 'ProductController@show'); //form de edición
+Route::get('/products/{id}/show', 'ProductController@show');
+Route::get('/category/{category}/show', 'CategoryController@show'); 
 
 Route::post('/cart', 'CartDetailController@store');
 Route::delete('/cart/detail/delete', 'CartDetailController@destroy');

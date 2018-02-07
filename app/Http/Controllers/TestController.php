@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
     public function welcome()
     {
-        $products = Product::paginate(9);
-        return view('welcome')->with(compact('products'));
+        //otengo sólo las categorias que tienen Productos
+        //para eso uso el método has() de Laravel
+        $categories = Category::has('products')->get();
+        return view('welcome')->with(compact('categories'));
     }
 }
