@@ -92,6 +92,13 @@
 
             <div class="section text-center">
                 <h2 class="title">Categorías disponibles</h2>
+                <!-- buscador -->
+                <form class="form-inline" method="get" action={{ url('/search') }}>
+                  <input type="text" placeholder="¿Qué producto busca?" class="form-control" name="query">
+                  <button class="btn btn-primary btn-fab btn-fab-mini btn-round" type="submit">
+                    <i class="material-icons">search</i>
+                  </button>
+                </form>
 
                 <div class="team">
                     <div class="row">
