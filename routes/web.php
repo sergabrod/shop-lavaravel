@@ -18,6 +18,7 @@ Route::get('/products/{id}/show', 'ProductController@show');
 Route::get('/category/{category}/show', 'CategoryController@show');
 
 Route::get('/search', 'SearchController@show');
+Route::get('/products/json', 'SearchController@data');
 
 Route::post('/cart', 'CartDetailController@store');
 Route::delete('/cart/detail/delete', 'CartDetailController@destroy');

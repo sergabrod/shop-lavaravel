@@ -220,7 +220,7 @@
       datumTokenizer: Bloodhound.tokenizers.whitespace,
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       // `states` is an array of state names defined in "The Basics"
-      local: ['prueba1', 'prueba2', 'prueba3', 'prueba4', 'abcde']
+      prefetch: '{{ url("products/json") }}'
     });
 
   $(function () {
