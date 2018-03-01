@@ -1,6 +1,6 @@
 @extends('layouts.shop')
 @section('body-class', 'landing-page')
-@section('title', 'Bienvenidos a Laravel Shop')
+@section('title', 'Bienvenidos a ' . config('app.name'))
 
 @section('styles')
   <style>
@@ -8,14 +8,14 @@
         margin-bottom: 5em;
     }
 
-    .row {
+    .team .row {
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
       display:         flex;
       flex-wrap: wrap;
     }
-    .row > [class*='col-'] {
+    .team .row > [class*='col-'] {
       display: flex;
       flex-direction: column;
     }
@@ -67,7 +67,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="title">Bienvenidos a Laravel Shop</h1>
+                    <h1 class="title">Bienvenidos a {{ config('app.name') }}</h1>
                     <h4>Realiza pedidos en l&iacute;nea y te contactaremos para realizar la entrega.</h4>
                     <br />
                     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-danger btn-raised btn-lg">
