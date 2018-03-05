@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION'),
+    'encryption' => env('MAIL_ENCRYPTION' ),
 
     /*
     |--------------------------------------------------------------------------
@@ -87,6 +87,15 @@ return [
     'username' => env('MAIL_USERNAME'),
 
     'password' => env('MAIL_PASSWORD'),
+
+    //Agregado para certificados autofirmados
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------

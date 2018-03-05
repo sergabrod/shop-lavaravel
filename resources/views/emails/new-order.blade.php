@@ -25,12 +25,12 @@
     <ul>
       @foreach ($cart->details as $detail)
         <li>
-          {{ $detail->product->name }} x {{ $detail->quantity }}
-          ($ {{ $detail->price * $detail->quantity }})
+          {{ $detail->product->name }} x {{ $detail->quantity }} - ${{ $detail->product->price}}
+          (Subtotal: ${{ $detail->product->price * $detail->quantity }})
         </li>
       @endforeach
     </ul>
-    <p><strong>Total a pagar:</strong> {{ $cart->total }}
+    <p><strong>Total a pagar:</strong> ${{ $cart->total }}
   <hr>
   <p>
     Haz <a href="{{ url('admin/orders/' . $cart->id) }}">click aquí</a>

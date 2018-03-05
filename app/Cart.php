@@ -15,7 +15,7 @@ class Cart extends Model
     {
         $total = 0;
         foreach ($this->details as $detail) {
-           $total += $detail->price * $detail->quantity;
+           $total += $detail->product->price * $detail->quantity;
         }
         return $total;
     }
