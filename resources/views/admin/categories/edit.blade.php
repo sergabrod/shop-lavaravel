@@ -19,7 +19,7 @@
                     </ul>
                   </div>
                 @endif
-                <form method="post" action="{{ url('/admin/categories/' . $category->id . '/edit') }}">
+                <form method="post" action="{{ url('/admin/categories/' . $category->id . '/edit') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="col-sm-6">
@@ -27,6 +27,10 @@
                                 <label class="control-label">Nombre</label>
                                 <input type="text" name="name" class="form-control" value="{{ old('name', $category->name) }}">
                             </div>
+                        </div>
+                        <div class="col-sm-6">
+                                <label class="control-label">Imágen</label>
+                                <input type="file" name="image">
                         </div>
                     </div>
                     <textarea class="form-control" name="description" placeholder="Descripción"
