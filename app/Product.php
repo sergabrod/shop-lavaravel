@@ -32,6 +32,6 @@ class Product extends Model
           return $featuredImage->url;
         }
         //caso contrario devolvemos la imágen por defecto de Productos
-        return '/images/products/default-image.jpg';
+        return '/images/default-image.jpg';
     }
 }

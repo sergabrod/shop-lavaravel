@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Product;
+use File;
 
 class CategoryController extends Controller
 {
@@ -61,8 +62,25 @@ class CategoryController extends Controller
       //$category->name = $request->input('name');
       //$category->description = $request->input('description');
       //$category->save(); //realiza el insert en la BD
-      $category->update($request->all());
+      //$category->update($request->all());
+      $category->update($request->only('name', 'description'));
+      if ($request->hasFile('image')){
+          //subimos la imágen seleccionada al servidor
+          $file = $request->file('image');
+          $path = public_path() .  '/images/categories';
+          $fileName = uniqid() . '-' . $file->getClientOriginalName();
+          $moved = $file->move($path, $fileName);
 
+          //Agregamos la imágen en la categoría creada
+          if ($moved) {
+              $previousImage = $category->image;
+              $category->image = $fileName;
+              $saved = $category->save(); //update
+              //Eliminamos la imágen anterior
+              if ($saved && $previousImage)
+                  File::delete($path . '/' . $previousImage);
+          }
+      }
       return redirect('/admin/categories');
   }
 

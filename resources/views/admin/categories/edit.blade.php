@@ -29,6 +29,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
+                                <img src="{{ $category->featured_image }}" height="60">
                                 <label class="control-label">Imágen</label>
                                 <input type="file" name="image">
                         </div>

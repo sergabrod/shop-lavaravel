@@ -31,9 +31,19 @@ class Category extends Model
 
     public function getFeaturedImageAttribute()
     {
+        //Si la categoría tiene imágen, devuelve la misma
+        //en otro caso devuelve la imágen del primer producto
+        //de esa categoría que encuentre
+        if($this->image)
+            return '/images/categories/' . $this->image;
         //Obtengo el primer producto de esta categoría
-        //y extraigo su imágen del campo calculado
-        $featuredProduct = $this->products()->first();
-        return $featuredProduct->featured_image;
+        //y extraigo su imágen del campo calculado, si no tiene producto
+        //devuelvo la imágen por defecto
+        $firstProduct = $this->products()->first();
+        if ($firstProduct) {
+            return $firstProduct->featured_image;
+        } else {
+            return '/images/default-image.jpg';
+        }
     }
 }
